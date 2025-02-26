@@ -4,7 +4,7 @@ metadata:
   creationTimestamp: "2024-09-26T09:36:07Z"
   finalizers:
   - service.kubernetes.io/load-balancer-cleanup
-  name: stregsystemet
+  name: workload
   namespace: default
   resourceVersion: "809655"
   uid: 1f5485f0-a839-472e-9cc6-278c9cdf785c
@@ -24,7 +24,7 @@ spec:
     protocol: TCP
     targetPort: 8000
   selector:
-    app: stregsystemet
+    app: workload
   sessionAffinity: None
   type: LoadBalancer
 status:
