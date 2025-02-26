@@ -36,8 +36,8 @@ k3s_cluster:
       - mysql-pvc.yml
       - mysql-deployment.yml
       - mysql-service.yml
-      - stregsystemet-deployment.yml
-      - stregsystemet-service.yml
+      - workload-deployment.yml
+      - workload-service.yml
 
     # Optional vars
     # extra_server_args: ""
