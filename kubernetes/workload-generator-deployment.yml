@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: workload-generator-deployment
+spec:
+  selector:
+    matchLabels:
+      app: workload-generator
+  template:
+    metadata:
+      labels:
+        app: workload-generator
+    spec:
+      containers:
+      - name: workload-generator
+        image: ghcr.io/aau-p9s/workload-generator:latest
+        args: ["--addr", "workload-api", "--port", "8123" ]
+        ports:
+        - containerPort: 8124
+
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "500m"
+          limits:
+            memory: "1024Mi"
+            cpu: "2000m"
+

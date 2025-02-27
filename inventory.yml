@@ -36,8 +36,10 @@ k3s_cluster:
       - mysql-pvc.yml
       - mysql-deployment.yml
       - mysql-service.yml
-      - workload-deployment.yml
-      - workload-service.yml
+      - workload-api-deployment.yml
+      - workload-api-service.yml
+      - workload-generator-deployment.yml
+      - workload-generator-service.yml
 
     # Optional vars
     # extra_server_args: ""
