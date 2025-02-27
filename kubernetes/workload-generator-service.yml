@@ -4,27 +4,27 @@ metadata:
   creationTimestamp: "2024-09-26T09:36:07Z"
   finalizers:
   - service.kubernetes.io/load-balancer-cleanup
-  name: workload
+  name: workload-generator
   namespace: default
   resourceVersion: "809655"
   uid: 1f5485f0-a839-472e-9cc6-278c9cdf785c
 spec:
   allocateLoadBalancerNodePorts: true
-  clusterIP: 10.43.51.123
+  clusterIP: 10.43.51.133
   clusterIPs:
-  - 10.43.51.123
+  - 10.43.51.133
   externalTrafficPolicy: Cluster
   internalTrafficPolicy: Cluster
   ipFamilies:
   - IPv4
   ipFamilyPolicy: SingleStack
   ports:
-  - nodePort: 32421
-    port: 8000
+  - nodePort: 32431
+    port: 8124
     protocol: TCP
-    targetPort: 8000
+    targetPort: 8124
   selector:
-    app: workload
+    app: workload-generator
   sessionAffinity: None
   type: LoadBalancer
 status:

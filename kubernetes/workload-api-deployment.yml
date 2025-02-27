@@ -1,21 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: workload-deployment
+  name: workload-api-deployment
 spec:
   selector:
     matchLabels:
-      app: workload
+      app: workload-api
   template:
     metadata:
       labels:
-        app: workload
+        app: workload-api
     spec:
       containers:
-      - name: workload
-        image: ghcr.io/aau-p9s/workload:latest
+      - name: workload-api
+        image: ghcr.io/aau-p9s/workload-api:latest
+        args: ["--port", "8123"]
         ports:
-        - containerPort: 8000
+        - containerPort: 8123
 
         resources:
           requests:
