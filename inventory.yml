@@ -29,17 +29,6 @@ k3s_cluster:
     # Or you can omit it if not using Vagrant and let the first server automatically generate one.
     token: "bGB6nfxtODef8Y0J4hrLF1XbGoQZA89B1LYVwta+pcIA2FxzGJgzRJWVvrjGnubk"
     api_endpoint: "{{ hostvars[groups['server'][0]]['ansible_host'] | default(groups['server'][0]) }}"
-    yaml:
-      - autoscaler-deployment.yml
-      - autoscaler-service.yml
-      - mysql-pv.yml
-      - mysql-pvc.yml
-      - mysql-deployment.yml
-      - mysql-service.yml
-      - workload-api-deployment.yml
-      - workload-api-service.yml
-      - workload-generator-deployment.yml
-      - workload-generator-service.yml
 
     # Optional vars
     # extra_server_args: ""

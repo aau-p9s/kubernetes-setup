@@ -14,7 +14,11 @@ spec:
       containers:
       - name: workload-generator
         image: ghcr.io/aau-p9s/workload-generator:latest
-        args: ["--addr", "workload-api", "--port", "8123" ]
+        environment:
+          GENERATOR_API_ADDR: workload-api
+          GENERATOR_API_PORT: 8123
+          GENERATOR_X: 150
+          GENERATOR_Y: 150
         ports:
         - containerPort: 8124
 
