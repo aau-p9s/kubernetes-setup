@@ -1,8 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: workload-generator-deployment
+  name: workload-generator
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: workload-generator
@@ -12,21 +13,31 @@ spec:
         app: workload-generator
     spec:
       containers:
-      - name: workload-generator
-        image: ghcr.io/aau-p9s/workload-generator:latest
-        environment:
-          GENERATOR_API_ADDR: workload-api
-          GENERATOR_API_PORT: 8123
-          GENERATOR_X: 150
-          GENERATOR_Y: 150
-        ports:
-        - containerPort: 8124
-
-        resources:
-          requests:
-            memory: "512Mi"
-            cpu: "500m"
-          limits:
-            memory: "1024Mi"
-            cpu: "2000m"
+        - name: workload-generator
+          image: ghcr.io/aau-p9s/workload-generator:latest
+          env:
+            - name: GENERATOR_API_ADDR
+              value: workload-api
+            - name: GENERATOR_API_PORT
+              value: "8082"
+            - name: GENERATOR_ADDR
+              value: 0.0.0.0
+            - name: GENERATOR_PORT
+              value: "8083"
+          ports:
+            - containerPort: 8083
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: workload-generator
+spec:
+  type: NodePort
+  selector:
+    app: workload-generator
+  ports:
+    - protocol: TCP
+      port: 8083
+      targetPort: 8083
+      nodePort: 30083
 
